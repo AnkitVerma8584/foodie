@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".WelcomeActivity"
-    android:background="@color/colorPrimary">
+    android:background="#fff">
 
     <ImageView
         android:id="@+id/imgLogo"
@@ -13,12 +13,12 @@
         android:layout_height="220dp"
         android:layout_centerInParent="true"
         android:padding="10dp"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/dm_splash"/>
     <TextView
         android:id="@+id/txtDm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#fff"
+        android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         android:textSize="40sp"
         android:text="RESTAURANT"
@@ -30,7 +30,7 @@
         android:id="@+id/txtTagline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#fff"
+        android:textColor="#1a237e"
         android:textSize="22sp"
         android:text="You Order WE Deliver"
         android:layout_centerHorizontal="true"
@@ -48,7 +48,7 @@
         android:layout_centerHorizontal="true"
         android:text="Developed by D Tech,Bengaluru"
         android:textStyle="italic"
-        android:textColor="#fff"
+        android:textColor="@color/colorPrimary"
         android:textSize="20sp" />
 
 
