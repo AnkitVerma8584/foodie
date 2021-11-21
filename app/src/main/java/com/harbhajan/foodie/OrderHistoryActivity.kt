@@ -41,7 +41,7 @@ class OrderHistoryActivity : AppCompatActivity() {
     lateinit var txtMoney:TextView
 
     lateinit var txtCustomerName:TextView
-    lateinit var txtCustomerMobile:TextView
+    //lateinit var txtCustomerMobile:TextView
     lateinit var txtSubTotal:TextView
     lateinit var txtTax:TextView
     lateinit var txtTotal:TextView
@@ -73,7 +73,7 @@ class OrderHistoryActivity : AppCompatActivity() {
         txtMoney=findViewById(R.id.txtMoney)
 
         txtCustomerName=findViewById(R.id.txtCustomerName)
-        txtCustomerMobile=findViewById(R.id.txtCustomerPhone)
+        //txtCustomerMobile=findViewById(R.id.txtCustomerPhone)
         txtSubTotal=findViewById(R.id.txtSubTotalRupee)
         txtTax=findViewById(R.id.txtTaxRupee)
         txtTotal=findViewById(R.id.txtTotalRupee)
@@ -95,7 +95,7 @@ class OrderHistoryActivity : AppCompatActivity() {
         txtAddress.text=address
 
         txtCustomerName.text=name
-        txtCustomerMobile.text=mobile
+        //txtCustomerMobile.text=mobile
        // val commonUrl="http://www.techblr.xyz/admin/img/"
 
     }

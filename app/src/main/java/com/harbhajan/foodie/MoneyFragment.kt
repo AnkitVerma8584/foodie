@@ -20,6 +20,8 @@ import org.json.JSONException
 class MoneyFragment : DialogFragment() {
     lateinit var txtTodayFund:TextView
     lateinit var txtTotalFund:TextView
+    lateinit var txtTodayOrders:TextView
+    lateinit var txtTotalOrders:TextView
     lateinit var sharedPreferences: SharedPreferences
     var urlId:String?=""
 
@@ -33,6 +35,8 @@ class MoneyFragment : DialogFragment() {
         val view=inflater.inflate(R.layout.fragment_money, container, false)
         txtTodayFund=view.findViewById(R.id.txtTodayFund)
         txtTotalFund=view.findViewById(R.id.txtTotalFund)
+        txtTodayOrders=view.findViewById(R.id.txtTodayOrderCount)
+        txtTotalOrders=view.findViewById(R.id.txtTotalOrderCount)
         sharedPreferences=context?.getSharedPreferences(getString(R.string.logged_in), Context.MODE_PRIVATE)!!
         val resId=sharedPreferences.getString("ResId","")
         val queue = Volley.newRequestQueue(activity as Context)
@@ -42,10 +46,15 @@ class MoneyFragment : DialogFragment() {
             object : JsonObjectRequest(Request.Method.GET, url + urlId, null, Response.Listener {
                 try {
                     val data=it.getJSONObject("data")
+                    val todayOrder=data.getString("today_order")
                     val totalFund=data.getString("total_amount")
+                    val totalorder=data.getString("total_order")
                     val todayFund=data.getString("today_amount")
+
                     txtTotalFund.text=totalFund
                     txtTodayFund.text=todayFund
+                    txtTodayOrders.text=todayOrder
+                    txtTotalOrders.text=totalorder
 
 
                 } catch (e: JSONException) {

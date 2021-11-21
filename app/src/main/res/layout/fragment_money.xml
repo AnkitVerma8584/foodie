@@ -7,7 +7,7 @@
     tools:context=".MoneyFragment">
     <androidx.cardview.widget.CardView
         android:layout_width="280dp"
-        android:layout_height="320dp"
+        android:layout_height="400dp"
         android:layout_centerInParent="true"
         app:cardCornerRadius="20dp">
         <RelativeLayout
@@ -24,6 +24,28 @@
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"/>
+            <TextView
+                android:id="@+id/txtTodayOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#1a237e"
+                android:textSize="20sp"
+                android:text="Today's Order Count:"
+                android:textStyle="normal"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/txtMoneySection"/>
+            <TextView
+                android:id="@+id/txtTodayOrderCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:text="0"
+                android:textStyle="italic"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/txtTodayOrder"/>
 
             <TextView
                 android:id="@+id/txtTodayCollection"
@@ -34,13 +56,13 @@
                 android:text="Today's Collection:"
                 android:textStyle="normal"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
-                android:layout_below="@+id/txtMoneySection"/>
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/txtTodayOrderCount"/>
             <TextView
                 android:id="@+id/txtTodayFund"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#1a237e"
+                android:textColor="#000"
                 android:textSize="20sp"
                 android:text="0"
                 android:textStyle="italic"
@@ -48,22 +70,53 @@
                 android:layout_marginTop="5dp"
                 android:drawableRight="@drawable/rupee"
                 android:layout_below="@+id/txtTodayCollection"/>
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#e0e0e0"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_below="@+id/txtTodayFund"/>
+            <TextView
+                android:id="@+id/txtTotalOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#1a237e"
+                android:textSize="20sp"
+                android:text="Total Order Count:"
+                android:textStyle="normal"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/view"/>
+            <TextView
+                android:id="@+id/txtTotalOrderCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:text="0"
+                android:textStyle="italic"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/txtTotalOrder"/>
             <TextView
                 android:id="@+id/txtTotalCollection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#1a237e"
                 android:textSize="20sp"
-                android:text="Today's Collection:"
+                android:text="Total Collection:"
                 android:textStyle="normal"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
-                android:layout_below="@+id/txtTodayFund"/>
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/txtTotalOrderCount"/>
             <TextView
                 android:id="@+id/txtTotalFund"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#1a237e"
+                android:textColor="#000"
                 android:textSize="20sp"
                 android:text="0"
                 android:layout_marginLeft="5dp"

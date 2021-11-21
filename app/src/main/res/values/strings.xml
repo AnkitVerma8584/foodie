@@ -15,4 +15,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile_credentials">Profile Credentials</string>
     <string name="logged_in">Log In</string>
+    <string-array name="Time">
+        <item>10 min.</item>
+        <item>15 min.</item>
+        <item>20 min.</item>
+        <item>30 min.</item>
+        <item>35+ min.</item>
+    </string-array>
 </resources>

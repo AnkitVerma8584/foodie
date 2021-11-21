@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -16,6 +17,8 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -26,6 +29,8 @@ class LoginActivity : AppCompatActivity() {
     lateinit var forgotPassword: TextView
     var userId:String?=""
     var pass:String?=""
+    var token:String?=""
+    var fcm:String?=""
     lateinit var sharedPreferences: SharedPreferences
 
 
@@ -39,21 +44,29 @@ class LoginActivity : AppCompatActivity() {
         etUserName = findViewById(R.id.etUsername)
         etPassword = findViewById(R.id.etPassword)
         sharedPreferences=getSharedPreferences(getString(R.string.logged_in), Context.MODE_PRIVATE)
-        var isLoogedIn=sharedPreferences.getBoolean("isLoggedIn",false)
+        val isLoogedIn=sharedPreferences.getBoolean("isLoggedIn",false)
         if (isLoogedIn){
             val intent =
                 Intent(this@LoginActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Toast.makeText(this,"token not generated",Toast.LENGTH_SHORT).show()
+            }else {
 
+                // Get new FCM registration token
+                token = task.result
+                sharedPreferences.edit().putString("token",token).apply()
+            }
+        })
         btnLogin.setOnClickListener {
-            val intent =
-                Intent(this@LoginActivity, MainActivity::class.java)
-            startActivity(intent)
+
 
             val username = etUserName.text.toString()
             val password = etPassword.text.toString()
+
             if (username.length <4) {
                 Toast.makeText(this@LoginActivity, "incorrect username", Toast.LENGTH_SHORT)
                     .show()
@@ -65,17 +78,19 @@ class LoginActivity : AppCompatActivity() {
                 val url ="http://techblr.xyz/admin/restaurant_login/"
                 userId="?userid=$username"
                 pass="&password=$password"
+                fcm="&fcm=$token"
                 val jsonParams=JSONObject()
                 jsonParams.put("username",username)
                 jsonParams.put("password",password)
-                val jsonObjectRequest = object : JsonObjectRequest(Request.Method.POST, url + userId + pass, jsonParams, Response.Listener {
+                val jsonObjectRequest = object : JsonObjectRequest(Request.Method.GET, url + userId + pass + fcm,null, Response.Listener {
                         try {
 
                             val data = it.getJSONObject("data")
                             val success = data.getBoolean("success")
                             val response = data.getJSONObject("data")
-                            setSharedPreferences(response)
                             if (success) {
+                                setSharedPreferences(response)
+
                                 val intent =
                                     Intent(this@LoginActivity, MainActivity::class.java)
                                 startActivity(intent)
@@ -87,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
                         } catch (e: JSONException) {
                             Toast.makeText(
                                 this@LoginActivity,
-                                "Some Unexpected Error Occurred $e",
+                                "incorrect username or password",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -126,7 +141,9 @@ class LoginActivity : AppCompatActivity() {
     fun setSharedPreferences(response:JSONObject){
         sharedPreferences.edit().putBoolean("isLoggedIn",true).apply()
         sharedPreferences.edit().putString("ResId",response.getString("id")).apply()
+
         sharedPreferences.edit().putString("RestaurantName",response.getString("restaurant_name")).apply()
+        sharedPreferences.edit().putBoolean("profileSaved",false).apply()
 
     }
 }

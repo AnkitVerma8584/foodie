@@ -27,6 +27,7 @@ class StatusDialogBox: DialogFragment() {
     lateinit var checkBoxOpen: CheckBox
     lateinit var checkBoxClose: CheckBox
     lateinit var btnUpdate:Button
+    lateinit var txtOpen:TextView
     lateinit var sharedPreferences: SharedPreferences
     var statusP: String? = ""
 
@@ -39,7 +40,9 @@ class StatusDialogBox: DialogFragment() {
         checkBoxOpen=view.findViewById(R.id.checkboxOpen)
         checkBoxClose=view.findViewById(R.id.checkboxClosed)
         btnUpdate=view.findViewById(R.id.btnUpdate)
+        txtOpen=view.findViewById(R.id.txtOpen)
         sharedPreferences=context?.getSharedPreferences(getString(R.string.logged_in), Context.MODE_PRIVATE)!!
+        txtOpen.text=sharedPreferences.getString("status","set status")
         btnUpdate.setOnClickListener {
             if (statusP == null) {
                 Toast.makeText(context, "Please check atleast one checkbox!!", Toast.LENGTH_SHORT)
@@ -53,7 +56,6 @@ class StatusDialogBox: DialogFragment() {
                         statusP = "Open"
                         // holder.checkboxUnavailable.isEnabled = false
                         statusProduct(statusP!!)
-
 
                     }
                         checkBoxClose.isChecked -> {
@@ -69,8 +71,6 @@ class StatusDialogBox: DialogFragment() {
 
         }
 
-
-
         return view
     }
     private fun statusProduct(status:String){
@@ -81,14 +81,15 @@ class StatusDialogBox: DialogFragment() {
 
         var uid="?rid=$resId"
         var ustatus="&status=$status"
-        jsonParams.put("product_id",id)
+        jsonParams.put("rid",resId)
         jsonParams.put("status",status)
         val jsonObjectRequest = object : JsonObjectRequest(Method.POST, url + uid + ustatus   , jsonParams, Response.Listener {
             try {
                 val data = it.getJSONObject("data")
-                val message = data.getString("Message")
+                val message = data.getString("message")
                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
                 val intent=Intent(activity as Context,MainActivity::class.java)
+                sharedPreferences.edit().putString("status",status).apply()
                 startActivity(intent)
             }catch (e: JSONException){
                 Toast.makeText(

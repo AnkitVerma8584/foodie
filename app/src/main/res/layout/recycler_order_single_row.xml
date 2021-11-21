@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="130dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
     android:layout_margin="6dp"
@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#5c6bc0"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:padding="3dp"
                     android:layout_below="@+id/txtOrderId"
                     android:text="address of customer"/>

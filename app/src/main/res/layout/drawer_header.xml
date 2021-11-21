@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="180dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     android:orientation="vertical">
@@ -13,6 +13,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
         android:src="@drawable/ic_profile"/>
+
     <TextView
         android:id="@+id/drawerHeaderName"
         android:layout_width="wrap_content"
@@ -23,5 +24,37 @@
         android:layout_toRightOf="@+id/drawerHeaderProfile"
         android:layout_marginTop="30dp"
         android:padding="10dp"/>
+
+
+    <TextView
+        android:id="@+id/txtAvailable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Available:"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:layout_below="@+id/drawerHeaderProfile"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="35dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/btnToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:switchMinWidth="56dp"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        app:thumbTextPadding="5dp"
+        android:layout_marginRight="25dp"
+        android:thumb="@drawable/thumb"
+        app:track="@drawable/track"
+        app:showText="true"
+        android:minWidth="100dp"
+        android:textOn="Open"
+        android:textSize="8sp"
+        android:textOff="Closed"/>
+
 
 </RelativeLayout>

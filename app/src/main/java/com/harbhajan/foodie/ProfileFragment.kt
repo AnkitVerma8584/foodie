@@ -31,10 +31,11 @@ class ProfileFragment : Fragment() {
     lateinit var imgBurgerProfile:ImageView
     lateinit var imgProfilePic:CircleImageView
     lateinit var etNameProfile:EditText
-    lateinit var etHandleProfile:EditText
+   // lateinit var etHandleProfile:EditText
     lateinit var etMobileProfile:EditText
     lateinit var etDescriptionProfile:EditText
     lateinit var sharedPreferences: SharedPreferences
+    lateinit var sp:SharedPreferences
     lateinit var saveProfile:Button
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,13 +45,18 @@ class ProfileFragment : Fragment() {
         imgBurgerProfile = view.findViewById(R.id.imgBurgerProfile)
         imgProfilePic = view.findViewById(R.id.imgProfilePic)
         etNameProfile = view.findViewById(R.id.txtNameProfile)
-        etHandleProfile = view.findViewById(R.id.txtHandleProfile)
+       // etHandleProfile = view.findViewById(R.id.txtHandleProfile)
         etMobileProfile = view.findViewById(R.id.txtMobileProfile)
         etDescriptionProfile = view.findViewById(R.id.txtDescriptionProfile)
         saveProfile=view.findViewById(R.id.btnSaveProfile)
         sharedPreferences =
             context?.getSharedPreferences(
                 getString(R.string.profile_credentials),
+                Context.MODE_PRIVATE
+            )!!
+        sp =
+            context?.getSharedPreferences(
+                getString(R.string.logged_in),
                 Context.MODE_PRIVATE
             )!!
         imgProfilePic.setOnClickListener {
@@ -72,15 +78,16 @@ class ProfileFragment : Fragment() {
 
         saveProfile.setOnClickListener {
             val name=etNameProfile.text.toString()
-            val handle=etHandleProfile.text.toString()
+           // val handle=etHandleProfile.text.toString()
             val mobile=etMobileProfile.text.toString()
             val description=etDescriptionProfile.text.toString()
-            if (name!="" && handle!="" && mobile!=""&& description!="") {
+            if (name!="" && mobile!=""&& description!="") {
 
                 if (mobile.length == 10) {
                     setSharedPreferences()
                     Toast.makeText(activity as Context, "Profile Saved", Toast.LENGTH_SHORT).show()
                    // sharedPreferences.edit().putBoolean("isLoggedIn",true).apply()
+                    sp.edit().putBoolean("profileSaved",true).apply()
                     val intent= Intent(activity as Context,SavedProfileActivity::class.java)
                     startActivity(intent)
 
@@ -140,10 +147,9 @@ class ProfileFragment : Fragment() {
             .putString("name", etNameProfile.text.toString()).apply()
         sharedPreferences.edit()
             .putString("mobile", etMobileProfile.text.toString()).apply()
-        sharedPreferences.edit()
-            .putString("handle", etHandleProfile.text.toString())
-            .apply()
+      //  sharedPreferences.edit().putString("handle", etHandleProfile.text.toString()).apply()
         sharedPreferences.edit().putString("description",etDescriptionProfile.text.toString()).apply()
+
 
     }
 }

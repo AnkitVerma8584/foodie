@@ -66,7 +66,6 @@ class NotificationFragment : Fragment() {
                         )
 
                         notificationDetails.add(notificationItems)
-
                         recyclerAdapter=RecyclerNotificationAdapter(activity as Context,notificationDetails)
                         recyclerNotification.adapter=recyclerAdapter
                         recyclerNotification.layoutManager=layoutManager
@@ -76,7 +75,7 @@ class NotificationFragment : Fragment() {
                 } catch (e: JSONException) {
                     Toast.makeText(
                         activity as Context,
-                        "Some Unexpected Error Occurred $e",
+                        "No New Orders!!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

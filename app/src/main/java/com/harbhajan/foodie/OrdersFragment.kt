@@ -80,7 +80,7 @@ class OrdersFragment : Fragment() {
                 } catch (e: JSONException) {
                     Toast.makeText(
                         activity as Context,
-                        "Some Unexpected Error Occurred $e",
+                        "No Orders!!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

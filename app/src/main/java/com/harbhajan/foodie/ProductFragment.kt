@@ -1,6 +1,7 @@
 package com.harbhajan.foodie
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,6 +23,7 @@ class ProductFragment : Fragment() {
     lateinit var recyclerProduct: RecyclerView
     lateinit var progressLayout: RelativeLayout
     private  var productDetails=ArrayList<Products>()
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +32,8 @@ class ProductFragment : Fragment() {
         val view= inflater.inflate(R.layout.fragment_product, container, false)
         progressLayout=view.findViewById(R.id.progressLayout)
         recyclerProduct=view.findViewById(R.id.recyclerProduct)
+        sharedPreferences=context?.getSharedPreferences(getString(R.string.logged_in), Context.MODE_PRIVATE)!!
+        val resId=sharedPreferences.getString("ResId","")
         // Inflate the layout for this fragment
       /*  var productList= arrayListOf<Products>(
             Products("OnePlus","SmartPhone","500","http/31")
@@ -40,19 +44,20 @@ class ProductFragment : Fragment() {
         layoutManager= LinearLayoutManager(activity)
 
         val queue = Volley.newRequestQueue(activity as Context)
-        val url ="http://www.techblr.xyz/admin/resturant-orderedProducts/"
+        val url ="http://www.techblr.xyz/admin/rproducts/"
+        val urlId="?rid=$resId"
         val jsonObjectRequest =
-            object : JsonObjectRequest(Request.Method.GET, url, null, Response.Listener {
+            object : JsonObjectRequest(Request.Method.GET, url +urlId, null, Response.Listener {
                 try {
                     progressLayout.visibility=View.GONE
                     val data=it.getJSONArray("data")
                     for (i in 0 until data.length()) {
                         val menuItem = data.getJSONObject(i)
                         val productItems = Products(
-                            menuItem.getString("product_id"),
+                            menuItem.getString("id"),
                             menuItem.getString("product"),
-                            menuItem.getString("category"),
                             menuItem.getString("image"),
+                            menuItem.getString("stock"),
                             menuItem.getString("total_price")
                         )
 

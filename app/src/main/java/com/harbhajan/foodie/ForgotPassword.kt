@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
@@ -13,35 +14,79 @@ import org.json.JSONObject
 
 class ForgotPassword : AppCompatActivity() {
     lateinit var etMobileNumber:EditText
-    lateinit var etEnterOtp:EditText
-    lateinit var btnSubmit1:Button
-    lateinit var btnSubmit2:Button
+    lateinit var etUserId:EditText
+    lateinit var etPassword:EditText
+    lateinit var etConfirmPassword:EditText
+    lateinit var btnUpdate:Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
         etMobileNumber=findViewById(R.id.etMobileNumber)
-        etEnterOtp=findViewById(R.id.etOtp)
-        btnSubmit1=findViewById(R.id.btnSubmit1)
-        btnSubmit2=findViewById(R.id.btnSubmit2)
-        btnSubmit1.setOnClickListener {
+        etUserId=findViewById(R.id.etUserId)
+        btnUpdate=findViewById(R.id.btnUpdate)
+        etPassword=findViewById(R.id.etPassword)
+        etConfirmPassword=findViewById(R.id.etConfirmPassword)
+
+
+        btnUpdate.setOnClickListener {
             var mobile=etMobileNumber.text.toString()
-            val queue = Volley.newRequestQueue(this@ForgotPassword)
-            val url="http://techblr.xyz/admin/update-password/"
-            val jsonParams=JSONObject()
-            jsonParams.put("mobile_number","mobile")
-            val jsonRequest=object : JsonObjectRequest(Request.Method.POST,url,jsonParams,Response.Listener {
-                try {
-                    val data=it.getJSONObject("data")
-                    val message=it.getJSONObject("message")
-                }catch (e:JSONException){
-
-                }
-            },Response.ErrorListener{
-
-            })
-            {
-
+            var userid=etUserId.text.toString()
+            var password=etPassword.text.toString()
+            var confirmPassword=etConfirmPassword.text.toString()
+            if(mobile.length!=10){
+                Toast.makeText(this,"Invalid Mobile Number",Toast.LENGTH_SHORT).show()
+            }else if(userid.length<4){
+                Toast.makeText(this,"set userId of minimum 4 characters",Toast.LENGTH_SHORT).show()
             }
+            else if (password.length<4){
+                Toast.makeText(this,"set password of minimum 4 characters",Toast.LENGTH_SHORT).show()
+            }else if(password!=confirmPassword){
+                Toast.makeText(this,"password did not confirmed",Toast.LENGTH_SHORT).show()
+            }else{
+                val queue = Volley.newRequestQueue(this)
+                val url ="http://techblr.xyz/admin/restaurant_updatePass/"
+                val jsonParams=JSONObject()
+
+                var uid="?userid=$userid"
+                var uphone="&phone=$mobile"
+                var upass="&password=$password"
+
+                val jsonObjectRequest = object : JsonObjectRequest(Method.GET, url + uid + upass +uphone   , null, Response.Listener {
+                    try {
+                        val data = it.getJSONObject("data")
+                        val message = data.getString("message")
+                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                    }catch (e:JSONException){
+                        Toast.makeText(
+                            this,
+                            "Something Went Wrong!!$e",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+
+                }, Response.ErrorListener {
+                    /*if (activity != null) {
+                        Toast.makeText(
+                            activity as Context,
+                            "Volley Error Occurred!!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                     */
+                    println("Error is $it")
+
+                }) {
+                    override fun getHeaders(): MutableMap<String, String> {
+                        val headers = HashMap<String, String>()
+                        headers["Content-Type"]="application/json"
+                        return headers
+                    }
+                }
+                queue.add(jsonObjectRequest)
+            }
+
         }
     }
 }

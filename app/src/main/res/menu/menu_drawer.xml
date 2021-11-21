@@ -3,39 +3,33 @@
     <group
         android:checkableBehavior="single">
         <item
-            android:id="@+id/status"
-            android:title="Restaurant Status"
-            android:icon="@drawable/ic_open"/>
+            android:id="@+id/latestOrders"
+            android:title="Latest Orders"
+            android:icon="@drawable/ic_latest_food"/>
         <item
             android:id="@+id/orders"
             android:title="Orders"
             android:icon="@drawable/ic_orders"/>
         <item
-            android:id="@+id/latestOrders"
-            android:title="Latest Orders"
-            android:icon="@drawable/ic_latest_food"/>
+            android:id="@+id/stock"
+            android:title="Product Stock"
+            android:icon="@drawable/ic_orders"/>
+
 
     <item
         android:id="@+id/profile"
         android:title="Profile"
         android:icon="@drawable/ic_profile"/>
-    <item
-        android:id="@+id/products"
-        android:title="Products"
-        android:icon="@drawable/ic_products"/>
 
     <item
         android:id="@+id/money"
         android:title="Money"
-        android:icon="@drawable/ic_money"/>
+        android:icon="@drawable/ic_rup"/>
     <item
         android:id="@+id/reports"
         android:title="Reports"
         android:icon="@drawable/ic_report"/>
-    <item
-        android:id="@+id/shareApp"
-        android:title="Share App"
-        android:icon="@drawable/ic_share"/>
+
     <item
         android:id="@+id/support"
         android:title="Contact Us"

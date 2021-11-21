@@ -8,55 +8,97 @@
         android:layout_height="300dp"
         android:layout_centerInParent="true">
         <RelativeLayout
+            android:id="@+id/ll"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="120dp"
+            android:background="#ede7f6">
 
             <TextView
                 android:id="@+id/txtStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="22sp"
                 android:textColor="#1a237e"
                 android:drawableRight="@drawable/ic_close"
                 android:layout_marginTop="35dp"
-                android:text="We are"
+                android:text="Restaurant is "
                 android:drawableLeft="@drawable/ic_open"
                 android:layout_centerHorizontal="true"
                 android:textStyle="bold"
                 android:padding="1dp" />
-            <CheckBox
-                android:id="@+id/checkboxOpen"
+            <TextView
+                android:id="@+id/txtOpen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#5c6bc0"
-                android:layout_marginTop="20dp"
-                android:textSize="20dp"
-                android:layout_marginLeft="35dp"
-                android:layout_below="@id/txtStatus"
-                android:text="Open"/>
-
-            <CheckBox
-                android:id="@+id/checkboxClosed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#5c6bc0"
-                android:text="Closed"
-                android:layout_marginTop="20dp"
-                android:layout_below="@id/txtStatus"
-                android:layout_marginLeft="30dp"
-                android:textSize="20dp"
-                android:layout_toRightOf="@id/checkboxOpen"/>
-            <Button
-                android:id="@+id/btnUpdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/checkboxOpen"
+                android:layout_below="@+id/txtStatus"
+                android:textSize="24sp"
+                android:text="Set Status"
+                android:layout_marginTop="5dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="45dp"
-                android:textSize="20dp"
-                android:textColor="#fff"
-                android:text="Update"
-                android:background="@color/colorPrimary"/>
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"/>
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#000"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_below="@+id/txtOpen"/>
+        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="#fff"
+                android:layout_marginTop="120dp">
+                <TextView
+                    android:id="@+id/txtChange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textColor="#000"
+                    android:text="change status here"
+                    android:textStyle="italic"
+                    android:layout_centerHorizontal="true"/>
+                <CheckBox
+                    android:id="@+id/checkboxOpen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#5c6bc0"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_below="@id/txtChange"
+                    android:text="Open"/>
+
+
+
+                <CheckBox
+                    android:id="@+id/checkboxClosed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#5c6bc0"
+                    android:text="Closed"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/txtChange"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="20sp"
+                    android:layout_toRightOf="@id/checkboxOpen"/>
+                <Button
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkboxOpen"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:textColor="#fff"
+                    android:text="Update"
+                    android:background="@color/colorPrimary"/>
+
+
+
 
 
 

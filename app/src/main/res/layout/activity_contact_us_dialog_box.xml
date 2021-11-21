@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textColor="#000"
-            android:text="DELIVERY MART"
+            android:text="MANA DELIVERY"
             android:textSize="22sp"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/imgLocation"/>

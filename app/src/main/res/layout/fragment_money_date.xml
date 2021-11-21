@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MoneyDateFragment">
+    <androidx.cardview.widget.CardView
+        android:layout_width="280dp"
+        android:layout_height="320dp"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="20dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtMoneySection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="22sp"
+                android:text="Money Section"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:text="  Select Date"
+                android:background="@drawable/stroke_box"
+                android:inputType="date"
+                android:textStyle="normal"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/txtMoneySection"/>
+            <ImageView
+                android:id="@+id/imgCalender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_calander"
+                android:layout_toRightOf="@id/txtDate"
+                android:layout_below="@id/txtMoneySection"
+                android:layout_marginTop="30dp"/>
+            <Button
+                android:id="@+id/btnSend"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@color/colorPrimary"
+                android:text="Send"
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/txtDate"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/txtTotalOrders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#1a237e"
+                android:textSize="20sp"
+                android:text="Total Orders till:"
+                android:textStyle="normal"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/btnSend"/>
+            <TextView
+                android:id="@+id/txtOrderFund"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:text="0"
+                android:textStyle="italic"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/txtTotalOrders"/>
+            <TextView
+                android:id="@+id/txtTotalCollection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#1a237e"
+                android:textSize="20sp"
+                android:text="Total Collection till:"
+                android:textStyle="normal"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/txtOrderFund"/>
+            <TextView
+                android:id="@+id/txtTotalFund"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#1a237e"
+                android:textSize="20sp"
+                android:text="0"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textStyle="italic"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:drawableRight="@drawable/rupee"
+                android:layout_below="@+id/txtTotalCollection"/>
+        </RelativeLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</RelativeLayout>

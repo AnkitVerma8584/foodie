@@ -20,7 +20,8 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class ProductRecyclerAdapter(val context: Context, val productList: ArrayList<Products>): RecyclerView.Adapter<ProductRecyclerAdapter.HomeViewHolder>() {
-    var id:String?=""
+
+    
     override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): HomeViewHolder {
         val view= LayoutInflater.from(parent.context).inflate(R.layout.recycler_product_single_row,parent,false)
         return HomeViewHolder(view)
@@ -34,6 +35,7 @@ class ProductRecyclerAdapter(val context: Context, val productList: ArrayList<Pr
         val commonUrl = "http://www.techblr.xyz/admin/img/"
         val products = productList[position]
         var statusP: String? = ""
+        var id:String?=""
         id = products.productId
         holder.productId.text = products.productId
         holder.productName.text = products.productName
@@ -51,16 +53,16 @@ class ProductRecyclerAdapter(val context: Context, val productList: ArrayList<Pr
             } else {
                 when {
                     holder.checkBoxAvailable.isChecked -> {
-                        statusP = "Available"
+                        statusP = "In Stock"
                        // holder.checkboxUnavailable.isEnabled = false
-                        statusProduct(statusP!!)
+                        statusProduct(statusP!!,id)
 
 
                     }
                     holder.checkboxUnavailable.isChecked -> {
-                        statusP = "Not Available"
+                        statusP = "Out Of Stock"
                        // holder.checkBoxAvailable.isEnabled = false
-                        statusProduct(statusP!!)
+                        statusProduct(statusP!!,id)
 
                     }
                 }
@@ -80,20 +82,20 @@ class ProductRecyclerAdapter(val context: Context, val productList: ArrayList<Pr
         val productId:TextView=view.findViewById(R.id.txtProductId)
         val btnUpdate:Button=view.findViewById(R.id.btnUpdate)
     }
-    fun statusProduct(status:String){
+    fun statusProduct(status:String,pid:String){
 
         val queue = Volley.newRequestQueue(context)
-        val url ="http://techblr.xyz/admin/resturant-orderedProducts/"
+        val url ="http://techblr.xyz/admin/products_status/"
         val jsonParams=JSONObject()
 
-        var uid="?id=$id"
-        var ustatus="&status=$status"
-        jsonParams.put("product_id",id)
-        jsonParams.put("status",status)
-        val jsonObjectRequest = object : JsonObjectRequest(Method.POST, url + uid + ustatus   , jsonParams, Response.Listener {
+        var uid="&product_id=$pid"
+        var ustatus="?stock=$status"
+        jsonParams.put("product_id",pid)
+        jsonParams.put("stock",status)
+        val jsonObjectRequest = object : JsonObjectRequest(Method.POST, url + ustatus +uid  , jsonParams, Response.Listener {
             try {
                 val data = it.getJSONObject("data")
-                val message = data.getString("Message")
+                val message = data.getString("message")
                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             }catch (e:JSONException){
                 Toast.makeText(
