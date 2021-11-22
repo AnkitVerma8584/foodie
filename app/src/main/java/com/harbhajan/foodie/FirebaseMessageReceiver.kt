@@ -23,6 +23,15 @@ class FirebaseMessageReceiver:FirebaseMessagingService(){
 
         return remoteView
     }
+     override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        if(remoteMessage.notification != null){
+            val data: Map<String, String> = remoteMessage.data
+            val title = data["title"]
+            val message = data["message"]
+            //generateNotification(remoteMessage.notification!!.title!!,remoteMessage.notification!!.body!!)
+            generateNotification(title!!,message!!)
+        }
+    }
     fun generateNotification(title: String, message: String){
         val intent=Intent(this,MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
