@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "993503989175",
-    "project_id": "foodie-2175d",
-    "storage_bucket": "foodie-2175d.appspot.com"
+    "project_number": "813999086196",
+    "project_id": "delivery-mart-restaurant",
+    "storage_bucket": "delivery-mart-restaurant.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:993503989175:android:72a287c3f6b9f1e8d06c32",
+        "mobilesdk_app_id": "1:813999086196:android:e80ae93267fb3b1ebe8f21",
         "android_client_info": {
           "package_name": "com.harbhajan.foodie"
         }
       },
       "oauth_client": [
         {
-          "client_id": "993503989175-js540sbfl1904t8nuq5lp4es5qfiq118.apps.googleusercontent.com",
+          "client_id": "813999086196-pldeef5kh3apslo9esacfff65iv919c9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.harbhajan.foodie",
+            "certificate_hash": "3a561af87e90eace3c51a1559493935a386e6405"
+          }
+        },
+        {
+          "client_id": "813999086196-p2foputqgc2d9o9h44l9936mvg32m0a0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCC5Kb3eQ61jH0Cow_1DVWtLe3jZnrrPoA"
+          "current_key": "AIzaSyBTpKxyYuYvgItfH8ryNGmKBVoPtF_dQ6o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "993503989175-js540sbfl1904t8nuq5lp4es5qfiq118.apps.googleusercontent.com",
+              "client_id": "813999086196-p2foputqgc2d9o9h44l9936mvg32m0a0.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

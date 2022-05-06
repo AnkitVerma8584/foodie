@@ -45,16 +45,17 @@
                     android:padding="3dp"
                     android:layout_below="@+id/txtOrderId"
                     android:text="address of customer"/>
+
                 <TextView
                     android:id="@+id/txtCustomerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#5c6bc0"
-                    android:textSize="1sp"
-                    android:padding="3dp"
-                    android:layout_marginTop="40dp"
                     android:layout_below="@+id/txtCustomerAddress"
-                    android:text="Customer Name" />
+                    android:layout_marginTop="40dp"
+                    android:padding="3dp"
+                    android:text="Customer Name"
+                    android:textColor="#5c6bc0"
+                    android:textSize="1sp" />
                 <TextView
                     android:id="@+id/txtCustomerMobile"
                     android:layout_width="wrap_content"

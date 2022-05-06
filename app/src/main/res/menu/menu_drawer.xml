@@ -1,42 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group
-        android:checkableBehavior="single">
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/latestOrders"
-            android:title="Latest Orders"
-            android:icon="@drawable/ic_latest_food"/>
+            android:icon="@drawable/ic_latest_food"
+            android:title="Latest Orders" />
         <item
             android:id="@+id/orders"
-            android:title="Orders"
-            android:icon="@drawable/ic_orders"/>
+            android:icon="@drawable/ic_orders"
+            android:title="Orders" />
         <item
             android:id="@+id/stock"
-            android:title="Product Stock"
-            android:icon="@drawable/ic_orders"/>
+            android:icon="@drawable/ic_orders"
+            android:title="Product Stock" />
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/ic_profile"
+            android:title="Profile" />
 
+        <item
+            android:id="@+id/money"
+            android:icon="@drawable/ic_rup"
+            android:title="Money" />
+        <item
+            android:id="@+id/reports"
+            android:icon="@drawable/ic_report"
+            android:title="Reports" />
 
-    <item
-        android:id="@+id/profile"
-        android:title="Profile"
-        android:icon="@drawable/ic_profile"/>
-
-    <item
-        android:id="@+id/money"
-        android:title="Money"
-        android:icon="@drawable/ic_rup"/>
-    <item
-        android:id="@+id/reports"
-        android:title="Reports"
-        android:icon="@drawable/ic_report"/>
-
-    <item
-        android:id="@+id/support"
-        android:title="Contact Us"
-        android:icon="@drawable/ic_contact_us"/>
-    <item
-        android:id="@+id/logout"
-        android:title="Logout"
-        android:icon="@drawable/ic_logout"/>
+        <item
+            android:id="@+id/support"
+            android:icon="@drawable/ic_contact_us"
+            android:title="Contact Us" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout" />
     </group>
 </menu>
